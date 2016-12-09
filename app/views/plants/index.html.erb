@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Plants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Universal ID</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Source</th>
+      <th>Source ID</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plants.each do |plant| %>
+      <tr>
+        <td><%= plant.uuid %></td>
+        <td><%= plant.name %></td>
+        <td><%= plant.category %></td>
+        <td><%= plant.source %></td>
+        <td><%= plant.source_id %></td>
+        <td><%= link_to 'Show', plant %></td>
+        <td><%= link_to 'Edit', edit_plant_path(plant) %></td>
+        <td><%= link_to 'Destroy', plant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plant', new_plant_path %>

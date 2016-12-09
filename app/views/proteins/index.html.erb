@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Proteins</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proteins.each do |protein| %>
+      <tr>
+        <td><%= protein.uuid %></td>
+        <td><%= protein.name %></td>
+        <td><%= protein.category %></td>
+        <td><%= link_to 'Show', protein %></td>
+        <td><%= link_to 'Edit', edit_protein_path(protein) %></td>
+        <td><%= link_to 'Destroy', protein, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Protein', new_protein_path %>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>P2EP Knowledgebase</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+
+<body>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">P2EP Knowledgebase</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if user_signed_in? %>
+            <li><a href="#!">Signed in as <strong><%= current_user.email %></strong></a></li>
+            <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> | <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+        <% else %>
+            <li><%= link_to 'Sign up', new_user_registration_path, :class => 'navbar-link'  %> | <%= link_to 'Login', new_user_session_path, :class => 'navbar-link'  %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+
+<% if controller.controller_name.equal? 'dashboard' %>
+    <main class="sidemenu_active">
+      <div class='container'>
+        <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+      </div>
+    </main>
+
+    <ul id="sidemenu" class="side-nav fixed">
+      <li><a href="#!">First Sidebar Link</a></li>
+      <li><a href="#!">Second Sidebar Link</a></li>
+    </ul>
+<% else %>
+    <main>
+
+
+      <div class='container'>
+        <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+      </div>
+    </main>
+<% end %>
+
+</body>
+</html>

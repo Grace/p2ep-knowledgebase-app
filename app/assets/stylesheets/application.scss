@@ -1,0 +1,27 @@
+@import 'jquery.dataTables.min.css';
+
+@import "materialize/components/color";
+$primary-color: color("grey", "darken-4") !default;
+$primary-color-light: false !default;
+$primary-color-dark: false !default;
+$secondary-color: color("blue", "darken-1") !default;
+@import 'materialize';
+
+.sidenav-overlay{opacity: 0;}
+
+#sidemenu {
+  z-index: 1;
+  top: 64px;
+  width: 400px;
+}
+
+.nav-wrapper {
+  z-index: 9999;
+}
+
+.sidemenu_active {
+  header, main, footer {
+    padding-left: 450px;
+  }
+}
+

@@ -1,0 +1,2 @@
+class PhenotypeController < ApplicationController
+end
