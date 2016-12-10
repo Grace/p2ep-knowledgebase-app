@@ -4,7 +4,7 @@ class Disease < Node
   property :mesh_tree_number, type: String
   property :semantic_type, type: String
   property :species, type: String
-  property :disease_id, type: String, unique: true
+  property :omim_disease_id, type: String
 
   # Validation
   validates_uniqueness_of :disease_id, case_sensitive: false

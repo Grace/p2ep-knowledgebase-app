@@ -1,24 +1,9 @@
 require_relative '../../config/environment.rb'
 require 'csv'
 require 'json'
-require 'active_support/hash_with_indifferent_access'
 require 'neo4j'
 require 'node'
 require 'plant'
-
-class CaseInsensitiveHash < HashWithIndifferentAccess
-  # This method shouldn't need an override, but my tests say otherwise.
-  def [](key)
-    super convert_key(key)
-  end
-
-  protected
-
-  def convert_key(key)
-    key.respond_to?(:downcase) ? key.downcase : key
-  end
-end
-
 
 class PlantFileLoader
   def initialize(file)
@@ -33,7 +18,6 @@ class PlantCSVLoader < PlantFileLoader
 
   def parse
     CSV.foreach(@file, :headers => false) do |row|
-      #data = CaseInsensitiveHash.new(Hash(JSON.parse(row[0])))
       new_hash = {}
       data = JSON.parse(row[0]).to_hash
       #puts data

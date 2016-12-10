@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.dataTables
+//= require select2-full
 //= require turbolinks
 //= require_tree .
 

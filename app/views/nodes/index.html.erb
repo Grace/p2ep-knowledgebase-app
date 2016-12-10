@@ -8,7 +8,9 @@
       <th>Universal ID</th>
       <th>Name</th>
       <th>Category</th>
-      <th colspan="3"></th>
+      <th>Source</th>
+      <th>Source ID</th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -18,6 +20,8 @@
         <td><%= node.uuid %></td>
         <td><%= node.name %></td>
         <td><%= node.category %></td>
+        <td><%= node.source %></td>
+        <td><%= node.source_id %></td>
         <td><%= link_to 'Show', node %></td>
         <td><%= link_to 'Edit', edit_node_path(node) %></td>
         <td><%= link_to 'Destroy', node, method: :delete, data: { confirm: 'Are you sure?' } %></td>

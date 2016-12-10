@@ -10,6 +10,7 @@ class PlantsController < ApplicationController
   # GET /plants/1
   # GET /plants/1.json
   def show
+    @plant
   end
 
   # GET /plants/new
@@ -69,6 +70,7 @@ class PlantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plant_params
-      params.fetch(:plant, {})
+      #params.fetch(:plant, {})
+      params.permit(:name, :category, :source, :source_id)
     end
 end
