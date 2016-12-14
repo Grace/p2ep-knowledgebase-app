@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   root to: "dashboard#index"
   get '/dashboard', to: 'dashboard#index'
   get '/home', to: 'dashboard#index'
+  get '/env', to: 'dashboard#env'
+  get '/search', to: 'dashboard#search'
 end

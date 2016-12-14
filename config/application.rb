@@ -24,7 +24,6 @@ module P2epKnowledgebase
       g.orm :neo4j
     end
 
-    config.assets.paths << Rails.root.join("app", "assets", "fonts")
     config.autoload_paths << Rails.root.join('app/models')
     config.autoload_paths << Rails.root.join('lib')
 

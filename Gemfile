@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'neo4j'
 gem 'devise-neo4j'
 gem 'materialize-sass'
+gem 'json'
+gem 'gon'
 gem 'select2-rails'
 
 

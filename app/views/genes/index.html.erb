@@ -1,32 +1,41 @@
-<h2> Genes </h2>
-<table>
-  <thead>
-    <tr>
-      <th>Universal ID</th>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Source</th>
-      <th>Source ID</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
+<div class="row">
+  <div class="card">
+    <div class="card-content">
+      <!--<span class="card-title">Gene Records</span>-->
+  <!--<div class="card-panel">-->
+      <table class="responsive-table highlight striped">
+        <thead>
+          <tr>
+            <th>Object ID</th>
+            <th>Gene Symbol</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Species</th>
+            <!--<th>OMIM Gene ID</th>-->
+            <!--<th>NCBI Gene ID</th>-->
+            <!--<th>Source</th>-->
+            <!--<th>Source ID</th>-->
+            <th colspan="9"></th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @genes.each do |gene| %>
-      <tr>
-        <td><%= gene.uuid %></td>
-        <td><%= gene.name %></td>
-        <td><%= gene.category %></td>
-        <td><%= gene.source %></td>
-        <td><%= gene.source_id %></td>
-        <td><%= link_to 'Show', gene %></td>
-        <td><%= link_to 'Edit', edit_gene_path(gene) %></td>
-        <td><%= link_to 'Destroy', gene, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Gene', new_gene_path %>
+        <tbody>
+          <% @genes.each do |gene| %>
+            <tr>
+              <td><%= gene.uuid %></td>
+              <td><%= gene.name %></td>
+              <td><%= gene.category %></td>
+              <td><%= gene.species %></td>
+              <td><%= gene.source %></td>
+              <td><%= gene.source_id %></td>
+              <td><%= link_to 'Show', gene,  class: 'waves-effect waves-light btn' %></td>
+              <td><%= link_to 'Edit', edit_gene_path(gene), class: 'waves-effect waves-light btn' %></td>
+              <td><%= link_to 'Destroy', gene, method: :delete, class: 'waves-effect waves-light btn', data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% link_to 'New Gene', new_gene_path, class: 'waves-effect waves-light btn' %>
+</div>
+</div>

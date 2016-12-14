@@ -1,0 +1,14 @@
+<% @results.each do |result| %>
+    <tr>
+      <td><%= result.uuid %></td>
+      <td><%= result.name %></td>
+      <td><%= result.category %></td>
+      <td><%= result.species %></td>
+      <td><%= result.source %></td>
+      <td><%= result.source_id %></td>
+      <td><%= result.description %></td>
+      <td>
+        <%= link_to 'Show', result,  target: :_blank,  class: 'waves-effect waves-light btn' %>
+      </td>
+    </tr>
+<% end %>
