@@ -47,7 +47,6 @@ class PlantCSVLoader < PlantFileLoader
 end
 
 current_directory = File.dirname(__FILE__)
-absolute_path = File.expand_path current_directory
-
-parser = PlantCSVLoader.new(File.join(absolute_path, '/data/test_plant_data.csv'))
+# absolute_path = File.expand_path current_directory
+parser = PlantCSVLoader.new(File.join(Rails.root, '/data/sources/plants/test_plant_data.csv'))
 parser.parse

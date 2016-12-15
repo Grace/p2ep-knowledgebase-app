@@ -1,6 +1,5 @@
 class NeighborRel
   include Neo4j::ActiveRel
-
   #before_save :do_this
 
   creates_unique

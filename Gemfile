@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
+#gem 'activesupport', '~> 5.0.0.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -29,16 +29,20 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 gem 'neo4j'
+gem 'neo4j-core'
 gem 'devise-neo4j'
+gem 'searchkick'
+gem 'sidekiq'
+
 gem 'materialize-sass'
 gem 'json'
 gem 'gon'
 gem 'select2-rails'
 
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'file-tail'
 end
 
 group :development do
@@ -50,7 +54,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+# Windows does not include zoneinfo sources, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 

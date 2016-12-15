@@ -5,6 +5,10 @@ class NodesController < ApplicationController
   # GET /nodes.json
   def index
     @nodes = Node.all
+    # :per_page is optional
+    # :return is also optional. To return multiple objects, use an array of symbols
+    # :order is -- you guessed it -- optional, too. It accepts the same arguments as Neo4j::ActiveNode::QueryProxy's `order` method
+    @nodes = Node.as(:n).all.paginate(:page => 1, :per_page => 10, return: :p, order: :category)
   end
 
   # GET /nodes/1

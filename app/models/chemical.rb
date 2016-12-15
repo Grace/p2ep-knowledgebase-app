@@ -1,4 +1,5 @@
 class Chemical < Node
+  searchkick
   # Properties
   property :category, type: String, default: 'Chemical'
   property :chemical_id, type: String, unique: true

@@ -1,4 +1,5 @@
 class Protein < Node
+  searchkick
   property :category, type: String, default: 'Protein'
   property :gene_symbol, type: String
   property :source, type: String, default: 'Uniprot'

@@ -49,11 +49,32 @@ module GeneUtils
     locus_type = g['locus_type'].to_s or nil
     mgd_id = GeneUtils.a_to_s(g['mgd_id']) or nil
     refseq = GeneUtils.a_to_s(g['refseq_accession']) or nil
-
-    gene = Gene.find_or_create(gene_symbol: gene_symbol, alias_symbols: alias_symbols, prev_name: prev_name, name: name, hgnc_id: hgnc_id, chromosome_location: chromosome_location, entrez_gene_id: entrez_gene_id, ensembl_gene_id: ensembl_gene_id, uniprot_ids: uniprot_ids, omim_gene_id: omim_id, pubmed_ids: pubmed_ids, gene_family: gene_family, gene_family_ids: gene_family_ids, locus_type: locus_type, mgd_id: mgd_id, refseq_accession: refseq)
+    gene = nil
+    begin
+      gene = Gene.find_or_create_by!(gene_symbol: gene_symbol.to_s.upcase)
+    rescue
+      gene = Gene.create(gene_symbol: gene_symbol.to_s.upcase)
+    end
+    if gene
+      gene.symbol = gene_symbol.to_s.upcase unless gene_symbol.nil?
+      gene.alias_symbols = alias_symbols unless alias_symbols.nil?
+      gene.prev_name = prev_name unless prev_name.nil?
+      gene.name = name unless prev_name.nil?
+      gene.hgnc_id = hgnc_id unless hgnc_id.nil?
+      gene.chromosome_location = chromosome_location unless chromosome_location.nil?
+      gene.entrez_gene_id = entrez_gene_id unless entrez_gene_id.nil?
+      gene.ensembl_gene_id = ensembl_gene_id unless ensembl_gene_id.nil?
+      gene.uniprot_ids = uniprot_ids unless uniprot_ids.nil?
+      gene.omim_gene_id = omim_id unless omim_id.nil?
+      gene.pubmed_ids = pubmed_ids unless pubmed_ids.nil?
+      gene.gene_family = gene_family unless gene_family.nil?
+      gene.gene_family_ids = gene_family_ids unless gene_family_ids.nil?
+      gene.locus_type = locus_type unless locus_type.nil?
+      gene.mgd_id = mgd_id unless mgd_id.nil?
+      gene.refseq_accession = refseq unless refseq.nil?
+    end
     return gene
   end
-
 
   def self.fetch_gene_symbol_report(gene_symbol)
     server='http://rest.genenames.org'
@@ -77,14 +98,14 @@ module GeneUtils
 
 end
 
-gene_data = GeneUtils.fetch_gene_symbol_report('BRAF')
-gene = GeneUtils.create_or_update(gene_data)
-
-entrez_id_number = gene.entrez_gene_id
-omim_id_number = gene.omim_gene_id
-
-entrez_source_id = 'ENTREZ:' + entrez_id_number.to_s
-omim_source_id = 'OMIM_Gene:' + omim_id_number.to_s
+# gene_data = GeneUtils.fetch_gene_symbol_report('BRAF')
+# gene = GeneUtils.create_or_update(gene_data)
+#
+# entrez_id_number = gene.entrez_gene_id
+# omim_id_number = gene.omim_gene_id
+#
+# entrez_source_id = 'ENTREZ:' + entrez_id_number.to_s
+# omim_source_id = 'OMIM_Gene:' + omim_id_number.to_s
 
 
 
