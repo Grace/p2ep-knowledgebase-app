@@ -52,8 +52,7 @@ Rails.application.configure do
   # Devise
   config.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
 
-
-  config.neo4j.session_type = :server_db
-  config.neo4j.session_path = 'http://localhost:7474'
+  config.neo4j.session.type = :http
+  config.neo4j.session.path = 'http://localhost:7474'
 
 end

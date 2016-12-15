@@ -27,14 +27,6 @@ module P2epKnowledgebase
     config.autoload_paths << Rails.root.join('app/models')
     config.autoload_paths << Rails.root.join('lib')
 
-    # Configure where the embedded neo4j database should exist
-    # Notice embedded db is only available for JRuby
-    # config.neo4j.session_type = :embedded_db  # default #server_db
-    # config.neo4j.session_path = File.expand_path('neo4j-db', Rails.root)
-
-    #config.neo4j.session_path = 'http://neo4j:p2ep@localhost:7474'
-    #config.neo4j.session_options = {initialize: { ssl: { verify: false }}}
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into sources in config/initializers
     # -- all .rb sources in that directory are automatically loaded.

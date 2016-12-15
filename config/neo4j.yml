@@ -1,11 +1,11 @@
 development:
-  type: server_db
+  type: http
   url: http://localhost:7474
 
 test:
-  type: server_db
+  type: http
   url: http://localhost:7575
 
 production:
-  type: server_db
+  type: http
   url: http://neo4j:password@localhost:7000
