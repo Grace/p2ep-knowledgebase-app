@@ -14,10 +14,10 @@
 <nav>
   <!-- Top Navigation Bar -->
   <div class="nav-wrapper">
-    <a href="http://localhost:3000/" class="brand-logo">P2EP Knowledgebase<i class="material-icons left">menu</i></a>
+    <a href="/" class="brand-logo">P2EP Knowledgebase<i class="material-icons left">menu</i></a>
     <ul id="nav-links" class="right">
       <% if user_signed_in? %>
-          <li><a href="#!">Signed in as <strong><%= current_user.email %></strong></a></li>
+          <li><a href="javascript:void(0);">Signed in as <strong><%= current_user.email %></strong></a></li>
           <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
           <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
       <% else %>
@@ -31,25 +31,24 @@
 <!-- Application Layout-->
 
 <!-- Notification/Alert card -->
-<div class="row">
-  <div class="col s12">
-    <div class="card">
-      <div class="card-content">
-        <p>Environment: <%= @env %></p>
-        <% if notice %>
-            <p class="alert alert-success"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-            <p class="alert alert-danger"><%= alert %></p>
-        <% end %>
+<% if notice or alert %>
+  <div class="row">
+    <div class="col s12">
+      <div class="card">
+        <div class="card-content">
+          <% if notice %>
+              <p class="alert alert-success"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+              <p class="alert alert-danger"><%= alert %></p>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-
+<% end %>
 
   <%= yield %>
-
-</div>
 
 </body>
 </html>

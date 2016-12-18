@@ -1,0 +1,32 @@
+#######################################################################################################################
+# File: docker-compose.yml
+# Maintainer: Grace Christenbery (gchriste@uncc.edu)
+# Description: Use the docker-compose tool to run this Docker app with neo4j and elasticsearch containers.
+# Containers:
+#   - "neo4j" on ports localhost:7474, localhost:7687
+#   - "es" on ports localhost:9200, localhost:9300
+# Volumes:
+#
+version: "2"
+services:
+  neo4j:
+    image: neo4j:3.0
+    container_name: 'neo4j'
+    volumes:
+      - ./db/neo4j/development/conf:/var/lib/neo4j/conf
+      - ./db/neo4j/development/import:/var/lib/neo4j/import
+      - ./db/neo4j/development/logs:/var/lib/neo4j/logs
+      - ./db/neo4j/development/data/databases/:/var/lib/neo4j/data/databases
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    command: ['neo4j', 'start']
+  es:
+    image: elasticsearch
+    container_name: 'es'
+    volumes:
+      - ./db/elasticsearch/:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    command: ['elasticsearch']

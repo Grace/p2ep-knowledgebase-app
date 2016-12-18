@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+      sessions: 'users/sessions'
+  }
+
   resources :proteins
   resources :phenotypes
   resources :pathways
@@ -8,7 +12,6 @@ Rails.application.routes.draw do
   resources :plants
   resources :nodes
 
-  devise_for :users
   root to: "dashboard#index"
   get '/dashboard', to: 'dashboard#index'
   get '/home', to: 'dashboard#index'

@@ -1,0 +1,6 @@
+development:
+  NEO4J_HOME: 'db/neo4j/development/'
+  NEO4J_BIN: 'db/neo4j/development/bin'
+  NEO4J_DB: 'db/neo4j/development/data/databases/graph.db'
+  NEO4J_URL: 'http://localhost:7474'
+  NEO4J_BOLT: 'https://localhost:7686'

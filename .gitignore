@@ -19,4 +19,5 @@
 .DS_Store
 /.idea/*
 Gemfile.lock
+/config/application.yml
 

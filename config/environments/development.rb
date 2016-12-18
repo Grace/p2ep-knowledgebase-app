@@ -4,6 +4,14 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+
+   # Devise Settings (Required for app to work)
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 } # In production, :host should be set to the actual host of your application.
+
+  # Neo4j.rb Settings (Required for app to work)
+  config.neo4j.session_type = :server_db
+  config.neo4j.session_path = ENV['NEO4J_URL'] || 'http://localhost:7474'
+
   config.cache_classes = false
 
   # Do not eager load code on boot.
@@ -48,11 +56,4 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  # Devise
-  config.action_mailer.default_url_options = { host: 'localhost', port: 4000 }
-
-  config.neo4j.session.type = :http
-  config.neo4j.session.path = 'http://localhost:7474'
-
 end
